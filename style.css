@@ -9,6 +9,7 @@
     margin-left: auto;
     margin-right:auto;
     text-align: center;
+    
 
     /* Stryling the text and giving it gradiant */
     color:#ffffff;
@@ -19,8 +20,9 @@
 
     /* Make sure text is infront of background images */
     display:block;
-    position: relative;
+    position: absolute;
     z-index: 3;
+    margin-left: 200px;
 }
 
 @keyframes move-twink-back {
@@ -62,7 +64,33 @@
     animation:move-clouds-back 200s linear infinite;
 }
 
-table th, td{
-  border: 1px solid black;
+
+.codeBody {
+  background-color: black;
   
+}
+.codeTitle {
+  text-align: center;
+  color: teal;
+  
+  
+}
+.title2 {
+  text-align: center;
+  color: teal;
+}
+.code {
+  background-color: white;
+  font-size: 10px;
+  margin-left: 30px;
+  margin-right: 15px;
+  
+}
+
+.link {
+  background-color: red;
+  font-size: 200px;
+  
+  
+  position: absolute;
 }
