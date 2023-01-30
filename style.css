@@ -61,3 +61,8 @@
     opacity: .4;
     animation:move-clouds-back 200s linear infinite;
 }
+
+table th, td{
+  border: 1px solid black;
+  
+}
