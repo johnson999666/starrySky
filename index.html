@@ -1,48 +1,91 @@
+<!DOCTYPE html>
 <html>
-  <h1>Home</h1>
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Twinkling Night Sky</title>
-        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-    </head>
-<a href="https://johnson999666.github.io/frank/">     <body>
-       <div class="stars"></div>
-        <div class="clouds"></div>
-       <div class="clouds"></div>
-       <div class="title">
-        <h1>Reach for the Stars</h1>
-         
-       </div>
-     <h2 class="glow">.</h2>
-      
-      <style>
-body {
-  background-color: black;
-  font-family: cursive;
-}
+<head>
+    <title>Tic Tac Toe</title>
+    <style>
+        .cell {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+      body {
+        background-color: red;
+      }
+    </style>
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <table>
+        <tr>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
+        <tr>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
+        <tr>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
+    </table>
+    <script>
+        let currentPlayer = 'X';
+        const cells = document.querySelectorAll('.cell');
+        cells.forEach(cell => {
+            cell.addEventListener('click', event => {
+                if (cell.textContent === '') {
+                    cell.textContent = currentPlayer;
+                    if (checkForWinner()) {
+                        alert(currentPlayer + ' wins!');
+                        resetGame();
+                    } else if (checkForDraw()) {
+                        alert('Draw!');
+                        resetGame();
+                    } else {
+                        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                    }
+                }
+            });
+        });
 
-.glow {
-  font-size: 200px;
-  color: #fff;
-  text-align: center;
-  animation: glow 1s ease-in-out infinite alternate;
-  position: absolute;
-  margin-left: 200px;
-  
-  
-}
-@-webkit-keyframes glow {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-  }
-  
-  to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
-  }
-}
+        function checkForWinner() {
+            const rows = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6]
+            ];
+            return rows.some(row => {
+                return cells[row[0]].textContent === currentPlayer &&
+                       cells[row[1]].textContent === currentPlayer &&
+                       cells[row[2]].textContent === currentPlayer;
+            });
+        }
 
-</style>
-      
-    </body></a>
+        function checkForDraw() {
+            return Array.from(cells).every(cell => {
+                return cell.textContent !== '';
+            });
+        }
+
+        function resetGame() {
+            cells.forEach(cell => {
+                cell.textContent = '';
+            });
+            currentPlayer = 'X';
+        }
+    </script>
+</body>
 </html>
